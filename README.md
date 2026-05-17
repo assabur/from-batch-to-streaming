@@ -1,47 +1,57 @@
-# From Batch to Streaming
+# Big Data Frameworks Courses
 
-Slides de cours construites avec [Slidev](https://github.com/slidevjs/slidev).
+Projet Slidev organise en plusieurs modules dans un seul repo.
+
+## Structure
+
+```text
+modules/
+  from-batch-to-streaming/
+    slides.md
+  apache-kafka-for-real-time-data-streaming/
+    slides.md
+scripts/
+  build-modules.mjs
+  modules.mjs
+```
 
 ## Developpement local
 
 - `npm install`
 - `npm run dev`
-- ouvrir <http://localhost:3030>
+- `npm run dev:batch`
+- `npm run dev:kafka`
 
-Le contenu principal du deck se trouve dans [slides.md](./slides.md).
+Par defaut, `npm run dev` ouvre le module `from-batch-to-streaming`.
 
 ## Build
 
 - `npm run build`
 
-Le site statique genere est produit dans `dist/`.
+Cette commande :
+
+- build chaque module dans `dist/<module>/`
+- genere une page d'accueil `dist/index.html` avec les liens vers les modules
+
+Builds individuels :
+
+- `npm run build:batch`
+- `npm run build:kafka`
 
 ## Deploiement Netlify
 
-Le projet est deja configure pour Netlify via [netlify.toml](./netlify.toml).
+Le projet est configure pour Netlify via [netlify.toml](./netlify.toml).
 
-Parametres utilises :
+Parametres utiles :
 
 - Build command : `npm run build`
 - Publish directory : `dist`
 - Node version : `20`
 
-### Option 1. Deploiement via l'interface Netlify
+Les redirects Netlify sont prevus pour :
 
-1. Creer un nouveau site dans Netlify.
-2. Choisir `Import an existing project` si le projet est sur GitHub, ou `Deploy manually` si tu veux envoyer le dossier `dist`.
-3. Si tu importes le projet :
-   - Build command : `npm run build`
-   - Publish directory : `dist`
-4. Lancer le deploy.
+- la page d'accueil du projet
+- le module `from-batch-to-streaming`
+- le module `apache-kafka-for-real-time-data-streaming`
 
-### Option 2. Deploiement manuel
-
-1. Executer `npm run build`
-2. Dans Netlify, choisir `Add new site` puis `Deploy manually`
-3. Glisser-deposer le dossier `dist`
-
-## Notes
-
-- Le fichier `netlify.toml` gere deja la redirection SPA vers `index.html`.
-- Le build de production a ete verifie localement avec `npm run build`.
+Le build genere aussi `dist/_redirects`, utile pour un deploiement manuel de `dist/` sur Netlify.

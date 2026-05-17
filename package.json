@@ -1,11 +1,16 @@
 {
-  "name": "from-batch-to-streaming",
+  "name": "big-data-frameworks-courses",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export"
+    "build": "node scripts/build-modules.mjs",
+    "build:batch": "slidev build modules/from-batch-to-streaming/slides.md --out dist/from-batch-to-streaming --base /from-batch-to-streaming/",
+    "build:kafka": "slidev build modules/apache-kafka-for-real-time-data-streaming/slides.md --out dist/apache-kafka-for-real-time-data-streaming --base /apache-kafka-for-real-time-data-streaming/",
+    "dev": "slidev modules/from-batch-to-streaming/slides.md --open",
+    "dev:batch": "slidev modules/from-batch-to-streaming/slides.md --open",
+    "dev:kafka": "slidev modules/apache-kafka-for-real-time-data-streaming/slides.md --open --port 3031",
+    "export:batch": "slidev export modules/from-batch-to-streaming/slides.md",
+    "export:kafka": "slidev export modules/apache-kafka-for-real-time-data-streaming/slides.md"
   },
   "dependencies": {
     "@slidev/cli": "^52.15.2",
